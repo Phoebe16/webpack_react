@@ -1,0 +1,29 @@
+{
+  "name": "webpack_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phoebe16/webpack_react.git"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "node.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Phoebe16/webpack_react/issues"
+  },
+  "homepage": "https://github.com/Phoebe16/webpack_react#readme",
+  "devDependencies": {
+    "path": "^0.12.7",
+    "webpack": "^4.14.0",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
