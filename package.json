@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Phoebe16/webpack_react#readme",
   "devDependencies": {
+    "extract-text-webpack-plugin": "^3.0.2",
     "path": "^0.12.7",
     "webpack": "^4.14.0",
     "webpack-dev-server": "^3.1.4"
