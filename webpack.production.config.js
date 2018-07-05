@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -61,8 +62,9 @@ module.exports = {
         new webpack.optimize.OccurrenceOrderPlugin(),
         // UglifyJsPlugin 压缩JS代码,webpack4已不支持这种写法，应该在optimization中配置
         // new webpack.optimize.UglifyJsPlugin(),
-        // 分离CSS和JS文件
-        // new ExtractTextPlugin('style.css'), 用一下
+        // 分离CSS和JS文件,webpack4需要升级一下npm install extract-text-webpack-plugin@next
+        // 但是没有分离出来css？？
+        new ExtractTextPlugin('style.css'),
         new CompressionPlugin({
             asset: '[path].gz[query]',
             algorithm: 'gzip',
