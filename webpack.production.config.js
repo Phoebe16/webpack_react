@@ -1,12 +1,15 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: 'bundle-[hash].js'
     },
     devtool: 'null',  // 方便调试，在开发阶段使用eval-source-map，在生产阶段一定不要使用
     // 让浏览器监听代码变化，自动刷新，搭建一个本地开发服务器，它基于node.js构建
@@ -45,11 +48,32 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        minimize: true  // 压缩js
+    },
     plugins: [
         new webpack.BannerPlugin('Phoebe'),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.tmp.html')
         }),  // 根据模板打包生成html文件
-        new webpack.HotModuleReplacementPlugin()  // 热加载插件
+        new webpack.HotModuleReplacementPlugin(),  // 热加载插件
+        // OccurrenceOrderPlugin 为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        // UglifyJsPlugin 压缩JS代码,webpack4已不支持这种写法，应该在optimization中配置
+        // new webpack.optimize.UglifyJsPlugin(),
+        // 分离CSS和JS文件
+        // new ExtractTextPlugin('style.css'), 用一下
+        new CompressionPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp('\\.(js|css)$'),
+            threshold: 50240,
+            minRatio: 0.8
+        }),
+        new CleanWebpackPlugin('build/*.*', {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
     ]
 };

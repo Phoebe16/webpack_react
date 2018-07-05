@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle-[hash].js'
     },
     devtool: 'eval-source-map',  // 方便调试，在开发阶段使用eval-source-map，在生产阶段一定不要使用
     // 让浏览器监听代码变化，自动刷新，搭建一个本地开发服务器，它基于node.js构建
@@ -51,6 +52,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.tmp.html')
         }),  // 根据模板打包生成html文件
-        new webpack.HotModuleReplacementPlugin()  // 热加载插件
+        new webpack.HotModuleReplacementPlugin(),  // 热加载插件
+        new CleanWebpackPlugin('dist/*.*', {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })  // 打包生成带有hash的文件名，删除之前打包过的多余的文件
     ]
 };
