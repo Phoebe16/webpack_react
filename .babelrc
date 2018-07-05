@@ -1,0 +1,20 @@
+/* 可以在webpack.config.js中配置，考虑到有很多配置项，可以单独提取到这个文件中配置
+webpack会自动调用babel配置选项 */
+{
+    "presets": [
+        "react", "env"
+    ], // 解析ES6的babel-preset-env包和解析JSX的babel-preset-react
+    "env": {
+        "development": {
+            "plugins": [
+                ["react-transform", {
+                    "transforms": [{
+                        "transform": "react-transform-hmr",
+                        "imports": ["react"],
+                        "locals": ["module"]
+                    }]
+                }]
+            ]
+        }
+    }
+}
