@@ -20,6 +20,7 @@ module.exports = {
         /* 配置完这些后，JS模块其实还是不能自动热加载的，还需要在你的JS模块中执行一个Webpack提供的API才能实现热加载，
         虽然这个API不难使用，但是如果是React模块，使用我们已经熟悉的Babel(react-transform-hrm)可以更方便的实现功能热加载 */
     },
+    mode: 'development',
     module: {
         rules: [
             {

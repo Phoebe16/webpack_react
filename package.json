@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode development",
-    "server": "webpack-dev-server --open --mode development",
+    "start": "webpack",
+    "server": "webpack-dev-server --open",
     "test-build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
-    "build": "webpack --config ./webpack.production.config.js --progress --mode production"
+    "build": "webpack --config ./webpack.production.config.js --progress"
   },
   "repository": {
     "type": "git",
