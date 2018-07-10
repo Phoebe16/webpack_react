@@ -21,6 +21,12 @@ module.exports = {
         虽然这个API不难使用，但是如果是React模块，使用我们已经熟悉的Babel(react-transform-hrm)可以更方便的实现功能热加载 */
     },
     mode: 'development',
+    resolve: {
+        extensions: ['.jsx', '.js', '.json', '.less'],
+        alias: {
+            // filter: path.join(__dirname, 'src/filter')
+        }
+    },
     module: {
         rules: [
             {
@@ -45,6 +51,31 @@ module.exports = {
                 {
                     loader: 'postcss-loader'
                 }]
+            },
+            {
+                test: /\.less$/,
+                use: [{
+                    loader: 'style-loader'
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: true
+                    }
+                },
+                {
+                    loader: 'less-loader'
+                }, 
+                {
+                    loader: 'postcss-loader'
+                }]
+            },
+            {
+                test: /\.(png|jpg|gif|woff|svg|eot|woff2|ttf)$/,
+                use: {
+                    loader: 'url-loader?limit=8192'  // 限制 8*1024 字节以下的转为base64格式
+                },
+                exclude: /node_modules/
             }
         ]
     },
