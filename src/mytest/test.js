@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import config from './config.json';
 import style from './test.less';
 
-const guangzhou = require('../image/test/guangzhou.jpg');
-const current = require('../image/test/current.png');
+const guangzhou = require('../../image/test/guangzhou.jpg');
+const current = require('../../image/test/current.png');
 
 class Test extends Component {
     render() {
