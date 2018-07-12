@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack",
+    "start": "webpack --watch",
     "server": "webpack-dev-server --open",
     "test-build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
     "build": "webpack --config ./webpack.production.config.js --progress"
@@ -52,9 +52,13 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "querystring": "^0.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0"
   }
 }

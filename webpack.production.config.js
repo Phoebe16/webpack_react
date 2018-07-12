@@ -92,7 +92,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),  // 热加载插件
         // OccurrenceOrderPlugin 为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID
         new webpack.optimize.OccurrenceOrderPlugin(),
-        // UglifyJsPlugin 压缩JS代码,webpack4已不支持这种写法，应该在optimization中配置
+        // UglifyJsPlugin 压缩JS代码,webpack4已不支持这种写法，应该在optimization中配置，开发环境就不压缩js了，浪费性能，修改一个js就要等待页面渲染
         // new webpack.optimize.UglifyJsPlugin(),
         // 分离CSS和JS文件,webpack4需要升级一下npm install extract-text-webpack-plugin@next
         // 但是没有分离出来css？？

@@ -3,6 +3,7 @@ import actions from '../actions/counter';
 import actions2 from '../actions/infoMember';
 import React, { Component } from 'react';
 import Test from '../mytest/test';
+import { axiosGet } from '../util/axios';
 
 class Counter extends Component {
     constructor(props) {
@@ -14,6 +15,9 @@ class Counter extends Component {
 
     componentDidMount() {
         console.log(this.props.infoMember);  // {}
+        axiosGet('/data/cityinfo/101010100.html', res => {
+            console.log(res)
+        })
     }
 
     add() {
