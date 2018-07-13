@@ -88,7 +88,9 @@ module.exports = {
         ]
     },
     optimization: {
-
+        splitChunks: {
+            name: 'vendor'
+        }  // 把react等库生成打包到vendor.hash.js里面去 ？？怎么我没提取成功？？
     },
     plugins: [
         new webpack.BannerPlugin('Phoebe'),
@@ -100,6 +102,9 @@ module.exports = {
             root: __dirname,
             verbose: true,
             dry: false
-        })  // 打包生成带有hash的文件名，删除之前打包过的多余的文件
+        }),  // 打包生成带有hash的文件名，删除之前打包过的多余的文件
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor'
+        // })  // webpack4已移除，应该使用config.optimization.splitChunks.name
     ]
 };

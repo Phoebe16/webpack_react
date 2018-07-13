@@ -14,14 +14,14 @@ module.exports = {
     },
     devtool: 'null',  // 方便调试，在开发阶段使用eval-source-map，在生产阶段一定不要使用
     // 让浏览器监听代码变化，自动刷新，搭建一个本地开发服务器，它基于node.js构建
-    devServer: {
-        contentBase: './build',  // 设置为另一个目录下的文件提供本地服务器，默认为根文件夹提供本地服务器
-        inline: true,  // 当源文件改变时会自动刷新页面
-        historyApiFallback: true,  // 开发单页应用时很有用，设为true时所有跳转都指向index.html
-        hot: true  // 修改组件代码后，自动刷新实时预览页面修改，配合HotModuleReplacementPlugin
-        /* 配置完这些后，JS模块其实还是不能自动热加载的，还需要在你的JS模块中执行一个Webpack提供的API才能实现热加载，
-        虽然这个API不难使用，但是如果是React模块，使用我们已经熟悉的Babel(react-transform-hrm)可以更方便的实现功能热加载 */
-    },
+    // devServer: {
+    //     contentBase: './build',  // 设置为另一个目录下的文件提供本地服务器，默认为根文件夹提供本地服务器
+    //     inline: true,  // 当源文件改变时会自动刷新页面
+    //     historyApiFallback: true,  // 开发单页应用时很有用，设为true时所有跳转都指向index.html
+    //     hot: true  // 修改组件代码后，自动刷新实时预览页面修改，配合HotModuleReplacementPlugin
+    //     /* 配置完这些后，JS模块其实还是不能自动热加载的，还需要在你的JS模块中执行一个Webpack提供的API才能实现热加载，
+    //     虽然这个API不难使用，但是如果是React模块，使用我们已经熟悉的Babel(react-transform-hrm)可以更方便的实现功能热加载 */
+    // },
     mode: 'production',
     resolve: {
         extensions: ['.jsx', '.js', '.json', '.less'],
