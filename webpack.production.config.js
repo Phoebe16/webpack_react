@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -28,6 +29,11 @@ module.exports = {
         alias: {
             // filter: path.join(__dirname, 'src/filter')
         }
+    },
+    optimization: {
+        splitChunks: {
+            name: 'vendor'
+        }  // 把react等库生成打包到vendor.hash.js里面去 ？？怎么我没提取成功？？
     },
     module: {
         rules: [
@@ -108,6 +114,16 @@ module.exports = {
             root: __dirname,
             verbose: true,
             dry: false
+        }),
+        new UglifyJsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new ExtractTextPlugin({
+            filename: '[name].[contenthash:5].css',
+            allChunks: true
         })
     ]
 };

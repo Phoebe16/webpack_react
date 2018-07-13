@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -106,5 +108,15 @@ module.exports = {
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'vendor'
         // })  // webpack4已移除，应该使用config.optimization.splitChunks.name
+        new UglifyJsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('development')
+            }
+        }),
+        new ExtractTextPlugin({
+            filename: '[name].[contenthash:5].css',
+            allChunks: true
+        })
     ]
 };
