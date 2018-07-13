@@ -4,6 +4,7 @@ import actions2 from '../actions/infoMember';
 import React, { Component } from 'react';
 import Test from '../mytest/test';
 import { axiosGet } from '../util/axios';
+import UploadPic from '../components/upload';
 
 class Counter extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class Counter extends Component {
     render() {
         return (
             <div>
+                <UploadPic />
                 <p>
                     Click: {this.props.counter} times
                     {'   '}

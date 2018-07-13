@@ -8,6 +8,7 @@ import App from './containers/App';
 import AppRouter from './router/router';
 
 import './index.less';
+import './components/style/upload.less';
 
 let store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
