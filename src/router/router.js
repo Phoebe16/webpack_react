@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from '../containers/App';
 import Subpage from '../components/subpage';
+import Decorator from '../study/decorator';
 
 export default class AppRouter extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class AppRouter extends React.Component {
                     // 前面有exact参数，说明只有特定路径 / 路径才能匹配到
                     <Route exact path="/" component={App} />
                     <Route path="/subpage" component={Subpage} />
+                    <Route path="/decorator" component={Decorator} />
                 </Switch>
             </BrowserRouter>
         )
