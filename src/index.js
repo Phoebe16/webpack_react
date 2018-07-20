@@ -10,6 +10,7 @@ import AppRouter from './router/router';
 import './index.less';
 import './components/style/upload.less';
 
+// 中间件可以在触发事件时在action和reducer之间进行处理，可以自己编写中间件处理
 let store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
 /*热更新*/
