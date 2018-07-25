@@ -4,6 +4,7 @@ import actions2 from '../actions/infoMember';
 import React, { Component } from 'react';
 import Test from '../mytest/test';
 import { axiosGet } from '../util/axios';
+import fetch from '../util/fetch';
 import UploadPic from '../components/upload';
 
 class Counter extends Component {
@@ -15,10 +16,15 @@ class Counter extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.infoMember);  // {}
-        axiosGet('/data/cityinfo/101010100.html', res => {
-            console.log(res)
-        })
+        // console.log(this.props.infoMember);  // {}
+        // axiosGet('/data/cityinfo/101010100.html', res => {
+        //     console.log(res)
+        // })
+        // fetch.get('/data/cityinfo/101010100.html').then(data => {
+        //     console.log('fetch data', res);
+        // })
+        const data = fetch.get('/data/cityinfo/101010100.html');
+        console.log('data', data)
     }
 
     add() {
