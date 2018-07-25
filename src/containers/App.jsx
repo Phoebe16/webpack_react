@@ -20,11 +20,10 @@ class Counter extends Component {
         // axiosGet('/data/cityinfo/101010100.html', res => {
         //     console.log(res)
         // })
-        // fetch.get('/data/cityinfo/101010100.html').then(data => {
-        //     console.log('fetch data', res);
-        // })
-        const data = fetch.get('/data/cityinfo/101010100.html');
-        console.log('data', data)
+        fetch.get('/data/cityinfo/101010100.html').then(res => {
+            
+            console.log('fetch data', JSON.parse(res).weatherinfo);
+        })
     }
 
     add() {
