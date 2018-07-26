@@ -10,7 +10,9 @@ import AppRouter from './router/router';
 import './index.less';
 import './components/style/upload.less';
 
-// 中间件可以在触发事件时在action和reducer之间进行处理，可以自己编写中间件处理
+/* 中间件可以在触发事件时在action和reducer之间进行处理，可以自己编写中间件处理
+store.dispatch原本应该接收一个action作为参数，使用redux-thunk之后可以接收一个
+方法作为参数，该方法的参数是(dispatch, getState) */
 let store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
 /*热更新*/
